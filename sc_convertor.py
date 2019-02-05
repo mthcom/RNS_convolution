@@ -50,3 +50,15 @@ class sc_convertor():
 	    return result
 	def clear_cache():
 	    sc_convertor.sn_cache.clear()
+	def new_mult(f, w, bits):
+		sc_f = sc_convertor.convert_to_sc(bits, f)
+		sc_w = sc_convertor.convert_to_sc(bits, w)
+		result = 0
+		this_w = sc_w
+		for i in range(2 ** bits):
+			this_and = sc_f & this_w
+			for j in range(2 ** bits):
+				result += this_and & 1
+				this_and = this_and >> 1
+			this_w = (this_w >> 1) | ((this_w & 1) << (2 ** bits - 1))
+		return result
