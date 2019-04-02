@@ -38,6 +38,7 @@ class QuantizedConv2D(Conv2D):
 
     def call(self, inputs):
         max_range = 100000000
+        print("Using quantized convolution with max_range" + max_range)
         # compute quantized inputs and kernel
         input_max = tf.reduce_max(inputs)
         kernel_max = tf.reduce_max(self.kernel)
