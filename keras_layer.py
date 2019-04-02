@@ -1,3 +1,6 @@
+from keras.layers import Conv2D
+import tensorflow as tf
+
 class QuantizedConv2D(Conv2D):
     def __init__(self, filters,
                  kernel_size,
